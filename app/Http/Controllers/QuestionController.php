@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
+use App\Models\Subject;
+use App\Models\SubjectCategory;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -34,15 +37,13 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-
         $request->validate([
             'subject' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
 
             'topic' => 'required',
             'language' => 'required',
-            'images' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'images' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             
             'question' => 'required',
             'answer1' => 'required',
@@ -53,21 +54,47 @@ class QuestionController extends Controller
             'description' => 'required',
             'difficulty_level' => 'required',
         ]);
-
-        $subject=$request->only(['subject','image']);
-        $topic=$request->only(['topic','language','images']);
-        $question=$request->only(['question','answer1','answer2','answer3','answer4','correct_answer','description','difficulty_level']);
-
         
 
+        if ($image = $request->file('image')) {
+            $destinationPath = public_path('image');
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+        if ($images = $request->file('images')) {
+            $destinationPath = public_path('image');
+            $profileImage = date('YmdHis') . "." . $images->getClientOriginalExtension();
+            $images->move($destinationPath, $profileImage);
+            $input['images'] = "$profileImage";
+        }
 
+        $subject=Subject::create([
+            'subject' => $request->subject,
+            'image' => $request->image,
+        ]);
 
+        $subject_category=SubjectCategory::create([
+            'topic' => $request->topic,
+            'language' =>$request->language,
+            'images' => $request->images,
+            'subjects_id' => $subject->id, 
+        ]);
 
+        Question::create([
+            'question' => $request->question,
+            'answer1' => $request->answer1,
+            'answer2' => $request->answer2,
+            'answer3' => $request->answer3,
+            'answer4' => $request->answer4,
+            'correct_answer' => $request->correct_answer,
+            'description' => $request->description,
+            'difficulty_level' => $request->difficulty_level,
+            'subject_categoryId' => $subject_category->id,
+        ]);
 
-
-
-
-
+        return back()->with('success','Question has been uploaded');
+        // return redirect()->route('singleQuestion.show')->with('success','one question has been created');
     }
 
     /**

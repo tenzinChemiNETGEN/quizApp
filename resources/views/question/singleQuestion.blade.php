@@ -8,6 +8,17 @@
         <div class="container">
             <form action="{{ route('singleQuestion.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                {{-- @include('layouts.inc.message') --}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="subject">Enter Subject Name</label>
                     <input class="form-control" type="text" placeholder="Example Math" name="subject">
@@ -38,40 +49,40 @@
                     <label for="Answer">Enter Answers</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                          <span class="input-group-text">1</span>
+                          <span class="input-group-text">A</span>
                         </div>
                         <input class="form-control" type="text" placeholder="Example: 12" name="answer1">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">2</span>
+                            <span class="input-group-text">B</span>
                         </div>
                         <input class="form-control" type="text" placeholder="Example: 3" name="answer2">
 
                     </div>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">3</span>
+                            <span class="input-group-text">C</span>
                         </div>
                         <input class="form-control" type="text" placeholder="Example: 41" name="answer3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">4</span>
+                            <span class="input-group-text">D</span>
                         </div>
                         <input class="form-control" type="text" placeholder="Example: 5" name="answer4">
                     </div>
                     
                     <label for="correct_answer">Select Correct</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="correct_answer">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
+                    <select class="form-control" id="correct_answer" name="correct_answer">
+                      <option value="1">A</option>
+                      <option value="2">B</option>
+                      <option value="3">C</option>
+                      <option value="4">D</option>
                     </select>
                     <label for="exampleFormControlTextarea1">Description of Answer</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
                     <label for="Difficulty level">Select Correct</label>
-                    <select class="form-control" id="" name="difficulty_level">
-                      <option>Easy</option>
-                      <option>Medius</option>
-                      <option>Hard</option>
+                    <select class="form-control" id="difficulty_level" name="difficulty_level">
+                      <option value="1">Easy</option>
+                      <option value="5">Medius</option>
+                      <option value="10">Hard</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit Question</button>

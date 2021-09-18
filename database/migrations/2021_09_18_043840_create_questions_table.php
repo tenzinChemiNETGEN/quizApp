@@ -24,12 +24,13 @@ class CreateQuestionsTable extends Migration
             $table->mediumText('description');
             $table->smallInteger('difficulty_level');
             $table->unsignedBigInteger('subject_categoryId');
-
+            $table->timestamps();
+            
             $table->foreign('subject_categoryId')
                 ->references('id')
                 ->on('subject_categories');
                 
-            $table->timestamps();
+           
         });
     }
 

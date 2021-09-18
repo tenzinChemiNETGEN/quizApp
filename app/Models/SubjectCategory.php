@@ -13,7 +13,10 @@ class SubjectCategory extends Model
         'topic',
         'language',
         'year',
-        'image',
+        'images',
         'subjects_id'
     ];
+
+    
+
 }
