@@ -17,6 +17,8 @@ class SubjectCategory extends Model
         'subjects_id'
     ];
 
-    
+    public function question(){
+        $this->hasMany(Question::class);
+    }
 
 }

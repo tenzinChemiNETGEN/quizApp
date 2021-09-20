@@ -20,4 +20,5 @@ class Question extends Model
         'difficulty_level',
         'subject_categoryId',
     ];
+    
 }

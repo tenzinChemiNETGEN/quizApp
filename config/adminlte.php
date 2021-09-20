@@ -261,13 +261,20 @@ return [
             'icon' => 'fas fa-plus-circle',
             'url'  => '#',
         ],
-        
+
         ['header' => 'Question Management'],
         [
             'url'  => 'admin/settings',
             'text'    => 'Add Questions',
             'icon'    => 'far fa-question-circle',
             'submenu' => [
+                
+                [
+                    'text' => 'Add the Subject',
+                    'url'  => 'subject/create',
+                    'icon' => 'fas fa-file-import',
+                ],
+
                 [
                     'text' => 'Import Bulk Questions',
                     'url'  => '#',
@@ -276,9 +283,12 @@ return [
                 [
                     'text'    => 'Add single Questions',
                     'url'     => 'singleQuestion/create',
-                    'icon' => 'fal fa-file-import'
-
-                   
+                    'icon' => 'fal fa-file-import',
+                ],
+                [
+                    'text' => 'Questions',
+                    'url'  => 'question',
+                    'icon' => 'fas fa fa-tasks',
                 ],
             ],
         ],

@@ -16,17 +16,14 @@ class Subject extends Model
         'image',
     ];
 
-    /**
-     * To check if subject is already there or not
-     */
-    public function hasSubject(Request $request)
-    {
-        try{
-            return $this->where('subject',$request->subject)->first();
-        }
-        catch(Exception $e){
-            return $e;
-        }
+    public function subjectCategory(){
+        return $this->hasMany(SubjectCategory::class);
     }
+
+    
+
+
+
+    
 
 }

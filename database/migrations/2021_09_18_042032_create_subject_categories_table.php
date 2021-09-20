@@ -15,7 +15,7 @@ class CreateSubjectCategoriesTable extends Migration
     {
         Schema::create('subject_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('topic');
+            $table->string('topic')->unique();
             $table->string('language');
             $table->string('images');
             $table->unsignedBigInteger('subjects_id');
