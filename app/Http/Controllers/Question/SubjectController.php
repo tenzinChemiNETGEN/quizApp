@@ -24,6 +24,7 @@ class SubjectController extends Controller
      * Edit Subjects 
      */
     public function create(Request $request){
+        
         $subject = Subject::all();
         if ($request->ajax()) {
             return DataTables::of($subject)
@@ -75,6 +76,7 @@ class SubjectController extends Controller
     /**
      * @return request
      */
+    
 
     public function edit($id){
     

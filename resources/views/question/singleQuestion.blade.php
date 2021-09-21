@@ -4,7 +4,6 @@
 
 <div class="card">
     <div class="card-body">
-        {{-- <h4 class="card-title">Add Questions</h4> --}}
         <div class="container">
             <form action="{{ route('singlequestion.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

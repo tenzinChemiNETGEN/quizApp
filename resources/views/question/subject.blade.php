@@ -4,7 +4,6 @@
 {{-- create subject --}}
 <div class="card">
     <div class="card-body">
-        {{-- <h4 class="card-title">Add Questions</h4> --}}
         <div class="container">
             <form action="{{ route('subject.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -46,7 +45,6 @@
                 </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
         @else
@@ -66,8 +64,8 @@
                     </button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete this user?
-                <small><p class="text-danger">Data Related to this user will also be deleted !</p></small>
+                Are you sure you want to delete this Subject
+                <small><p class="text-danger">Data Related to this subject will also be deleted !</p></small>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Close</button>

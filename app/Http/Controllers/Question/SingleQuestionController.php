@@ -10,21 +10,7 @@ use Illuminate\Http\Request;
 
 class SingleQuestionController extends Controller
 {
-    /**
-     * View Single Questions
-     * @return request
-     */
-    public function index()
-    {
-        // $subject = Subject::all();
-        // // $subject_category = SubjectCategory::all();
-        // // $question = Question::all();
-        
-        // return view('question.questions',[
-        //     'subjects' => $subject,
-        // ]);
-    }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -96,9 +82,7 @@ class SingleQuestionController extends Controller
         // return redirect()->route('singleQuestion.show')->with('success','one question has been created');
     }
 
-    /**
-     * @return EditView
-     */
+
 
 
 

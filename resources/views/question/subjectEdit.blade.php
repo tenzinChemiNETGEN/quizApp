@@ -3,12 +3,22 @@
 @section('content')
 @include('layouts.inc.message')
 <div class="row">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2>Edit Subject</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('singleQuestion.create') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('subject.create') }}"> Back</a>
         </div>
     </div>
 </div>

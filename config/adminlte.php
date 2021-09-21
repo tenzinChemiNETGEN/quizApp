@@ -277,7 +277,7 @@ return [
 
                 [
                     'text' => 'Import Bulk Questions',
-                    'url'  => '#',
+                    'url'  => 'excel-question',
                     'icon' => 'fas fa-file-import'
                 ],
                 [

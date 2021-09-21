@@ -17,7 +17,7 @@ class CreateSubjectCategoriesTable extends Migration
             $table->id();
             $table->string('topic')->unique();
             $table->string('language');
-            $table->string('images');
+            $table->string('images')->nullable();
             $table->unsignedBigInteger('subjects_id');
             $table->timestamps();
             $table->foreign('subjects_id')
